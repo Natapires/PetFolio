@@ -12,6 +12,7 @@ namespace Petfolio.API.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredPetJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
         public IActionResult Register([FromBody] RequestPetJson request)
         {
             var useCase = new RegisterPetUseCase();
@@ -23,6 +24,7 @@ namespace Petfolio.API.Controllers
         [HttpPut]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
         public IActionResult Update([FromRoute] int id, [FromBody] RequestPetJson request)
         {
             var useCase = new UpdatePetUseCase();
